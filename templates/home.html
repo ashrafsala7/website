@@ -22,20 +22,20 @@
        </script>
    </head>
    <body class="home">
-	  
+
 	   <div class="signup-toggle"  {% if signupform.errors  %} style="display: block" {% endif %}>
-	   
+
 		   <div class="signup-form">
 			   <form action="{% url 'home' %}"  method="post">
 
 
 					{% csrf_token %}
 
-					
+
 					<div class="input-dir">
 						{{ signupform.username }}
 					</div>
-					
+
 					<div class="input-dir">
 						{{ signupform.email }}
 					</div>
@@ -44,18 +44,18 @@
 							&#10095;
 							<!--{% trans "Signup" %}--></button>
 					</div>
-					
-				   
+
+
 			   </form>
 		   </div>
-		  
+
 		   	<div class="errors"> {{ signupform.non_field_errors }} </div>
 			<div class="errors"> {{ signupform.username.errors }} </div>
 			<div class="errors"> {{ signupform.email.errors }} </div>
 	   </div>
 
       <div class="background-image">
-		
+
 		   <div class="navbar-brand">
          <div>
              {% trans "Academy" %}
@@ -74,17 +74,17 @@
 {#                {% trans "Account" %}#}
 {#            </a>#}
 {#        {% else %}#}
-			
+
 		 <div class="home-menu">
             <a href="#top" id="signup" {% if signupform.errors  %} class="active" {% endif %}>
                 {% trans "Signup" %}
             </a>
-			 
+
 			<a id="forum-button" href="http://forums.coretabs.net" target="_blank">
                 {% trans "Forums" %}
             </a>
 		 </div>
-		 	
+
 <!--
 
             <form id="signup-panel" method="post" action="{% url 'home' %}" {% if signupform.errors  %} style="display: block" {% endif %}>
@@ -153,12 +153,12 @@
                     </option>
                 {% endfor %}
             </select>
-			
+
         </form>
 -->
 
      </div>
-		  
+
       {% if messages %}
           <div style="width: 100%">
              {% for message in messages %}
@@ -173,29 +173,27 @@
 			Familiarity with programming is indispensable today. Learning programming is one of the most rich and useful things you can do.
 			{% endblocktrans %}
         </p>
-        <a class="link" href="#main">{% trans 'Courses' %}</a>
-         <div class="course animated infinite bounce">
-            <i class="fas fa-chevron-down"></i>
-            <a href="#main"></a>
-         </div>
+        <a class="link">{% trans 'Courses' %}</a>
+        <div class="testC">
+          <main id="main" class="home beauty-box">
+             <h1 class="title">{% trans 'Courses' %}</h1>
+             <div class="tracks">
+                <div class="track">
+                    <a href="{% url 'frontend' %}">
+                        <img src="{% static 'images/frontend.jpg' %}" alt="Front End">
+                        <h2>{% trans 'Front End' %}</h2>
+                    </a>
+                </div>
+                <div class="track">
+                    <a href="{% url 'fullstack' %}">
+                        <img src="{% static 'images/fullstack.jpg' %}" alt="Full Stack">
+                        <h2>{% trans 'Full Stack' %}</h2>
+                    </a>
+                </div>
+             </div>
+          </main>
+        </div>
       </div>
-      <main id="main" class="beauty-box">
-         <h1 class="title">{% trans 'Courses' %}</h1>
-         <div class="tracks">
-            <div class="track">
-                <a href="{% url 'frontend' %}">
-                    <img src="{% static 'images/frontend.jpg' %}" alt="Front End">
-                    <h2>{% trans 'Front End' %}</h2>
-                </a>
-            </div>
-            <div class="track">
-                <a href="{% url 'fullstack' %}">
-                    <img src="{% static 'images/fullstack.jpg' %}" alt="Full Stack">
-                    <h2>{% trans 'Full Stack' %}</h2>
-                </a>
-            </div>
-         </div>
-      </main>
       <div class="about">
          <h1>{% trans 'About website' %}</h1>
          <p>
@@ -208,38 +206,39 @@
       <footer>
 		    <div class="text"> Made with <span class="heart">&#10084;</span> by <a href="{% url 'contributors' %}"> Our Contributors</a>  </div>
       </footer>
-	   
-	   
+
+
 	  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	   <script>
-	   		
-		   
+
+
 		   (function($) {
-		   
-		   
+
+
 		   $('#signup').click(function() {
-			   
+
 			   	var regText = "تسجيل";
 			   	var closeText = "إغلاق";
 			   	var text = $(".signup-toggle").is(':visible') ? regText : closeText;
 			   	$("#signup").text(text);
 			   	$('.signup-toggle').slideToggle(400);
-			   
+
 		   	});
-		   
+
 		   $('.input-dir input[type=text]').on('keyup',function (){
 				if($(this).val().charCodeAt(0) < 200){
 			   		$(this).css('direction','ltr');
 		   		}else{
 					$(this).css('direction','rtl');
-				}							   
+				}
 			});
-			   
+
 		 }(jQuery));
-		   
+
 	   </script>
       <script src="{% static 'js/main.js' %}"></script>
       <script src="{% static 'js/site.js' %}"></script>
+      <script src="{% static 'js/testC.js' %}"></script>
    </body>
 </html>
